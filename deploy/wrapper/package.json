@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "mcp-omnisearch": "0.0.29",
-    "mcp-proxy": "1.0.0"
+    "mcp-proxy": "^6.7.4"
   }
 }
