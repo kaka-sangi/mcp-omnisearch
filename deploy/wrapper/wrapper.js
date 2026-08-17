@@ -14,7 +14,7 @@ function startUpstream() {
 	const child = spawn(
 		process.execPath,
 		[
-			'./node_modules/.bin/mcp-proxy',
+			'./node_modules/mcp-proxy/dist/bin/mcp-proxy.mjs',
 			'--upstreamProtocol',
 			'auto',
 			'--port',
@@ -22,8 +22,10 @@ function startUpstream() {
 			'--host',
 			UPSTREAM_HOST,
 			'--stateless',
+			'--shell',
 			'--',
-			'./node_modules/.bin/mcp-omnisearch',
+			process.execPath,
+			'./node_modules/mcp-omnisearch/dist/index.js',
 		],
 		{ stdio: 'inherit', env: process.env },
 	);
