@@ -1,7 +1,4 @@
-node_modules
-npm-debug.log
-.git
-.gitignore
-README.md
-Dockerfile
-.dockerignore
+*
+!wrapper.mjs
+!package.json
+!node_modules/**

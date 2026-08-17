@@ -13,9 +13,9 @@ ENV NODE_ENV=production \
 RUN apk add --no-cache curl \
     && addgroup -S mcp && adduser -S mcp -G mcp
 
-COPY --from=deps /app/node_modules ./node_modules
-COPY wrapper.mjs ./wrapper.mjs
-COPY package.json ./package.json
+COPY --from=deps --chown=mcp:mcp /app/node_modules ./node_modules
+COPY --chown=mcp:mcp wrapper.mjs ./wrapper.mjs
+COPY --chown=mcp:mcp package.json ./package.json
 
 USER mcp
 EXPOSE 3000
