@@ -1,4 +1,4 @@
 *
-!package.json
-!wrapper.js
-!node_modules/
+!deploy/
+!deploy/wrapper/
+!deploy/wrapper/**

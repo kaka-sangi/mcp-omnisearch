@@ -1,12 +1,12 @@
 FROM node:22-alpine AS deps
 WORKDIR /app
-COPY package.json ./
+COPY deploy/wrapper/package.json ./
 RUN npm install --omit=dev --no-audit --no-fund
 
 FROM node:22-alpine AS build
 WORKDIR /app
-COPY package.json ./
-COPY wrapper.js ./wrapper.js
+COPY deploy/wrapper/package.json ./
+COPY deploy/wrapper/wrapper.js ./wrapper.js
 RUN npm install --omit=dev --no-audit --no-fund
 
 FROM node:22-alpine
