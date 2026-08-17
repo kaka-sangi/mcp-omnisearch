@@ -3,6 +3,12 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install --omit=dev --no-audit --no-fund
 
+FROM node:22-alpine AS build
+WORKDIR /app
+COPY package.json ./
+COPY wrapper.mjs ./wrapper.mjs
+RUN npm install --omit=dev --no-audit --no-fund
+
 FROM node:22-alpine
 WORKDIR /app
 ENV NODE_ENV=production \
@@ -13,9 +19,8 @@ ENV NODE_ENV=production \
 RUN apk add --no-cache curl \
     && addgroup -S mcp && adduser -S mcp -G mcp
 
-COPY --from=deps --chown=mcp:mcp /app/node_modules ./node_modules
-COPY --chown=mcp:mcp wrapper.mjs ./wrapper.mjs
-COPY --chown=mcp:mcp package.json ./package.json
+COPY --from=build --chown=mcp:mcp /app/node_modules ./node_modules
+COPY --from=build --chown=mcp:mcp /app/wrapper.mjs ./wrapper.mjs
 
 USER mcp
 EXPOSE 3000
