@@ -1,5 +1,4 @@
-# Use plain allowlist instead of glob exclusions to avoid upstream ignore rules.
 *
 !package.json
-!wrapper.mjs
+!wrapper.js
 !node_modules/

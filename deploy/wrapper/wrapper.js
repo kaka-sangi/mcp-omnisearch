@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 // Streamable-HTTP wrapper around the mcp-omnisearch stdio upstream.
-//
-// Layout: we spawn `mcp-proxy` on an internal port; this script binds the
-// public port and forwards every non-`/health` request to it.
 
 import { spawn } from 'node:child_process';
 import { request as http_request } from 'node:http';
