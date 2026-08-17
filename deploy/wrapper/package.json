@@ -1,0 +1,16 @@
+{
+  "name": "mcp-omnisearch-streamable-http",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Streamable-HTTP wrapper around mcp-omnisearch stdio upstream.",
+  "type": "module",
+  "main": "wrapper.mjs",
+  "engines": { "node": ">=22.0.0" },
+  "scripts": {
+    "start": "node wrapper.mjs"
+  },
+  "dependencies": {
+    "mcp-omnisearch": "0.0.29",
+    "mcp-proxy": "1.0.0"
+  }
+}
