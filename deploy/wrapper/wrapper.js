@@ -12,8 +12,9 @@ const PUBLIC_PORT = Number.parseInt(process.env.PORT || '3000', 10);
 
 function startUpstream() {
 	const child = spawn(
-		'mcp-proxy',
+		process.execPath,
 		[
+			'./node_modules/.bin/mcp-proxy',
 			'--upstreamProtocol',
 			'auto',
 			'--port',
@@ -22,7 +23,7 @@ function startUpstream() {
 			UPSTREAM_HOST,
 			'--stateless',
 			'--',
-			'mcp-omnisearch',
+			'./node_modules/.bin/mcp-omnisearch',
 		],
 		{ stdio: 'inherit', env: process.env },
 	);
